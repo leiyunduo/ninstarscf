@@ -1,0 +1,177 @@
+/**
+  1. 全局LESS 以 'ns-' 开头，后面根据对应含义命名
+  2. 自定主题文件可以写在 ./theme 文件夹中，通过@import 引用到本文件内，全局使用
+**/
+
+/*
+* iconfont
+*/
+
+// 定义变量，变量名驼峰峰名
+@nsTheme: #eb6100;
+@nsThemeDark: #38adff;
+@nsText: #333;
+@nsTextDesc: #666;
+@nsTextNull: #999;
+
+// 方法，方法命名不限，传参不限
+.ns-button (@type, @size: medium) when (@type = o) {
+  .set-btn;
+  .set-btn-size(@size);
+  .set-btn-orange
+}
+.ns-button (@type, @size: medium) when (@type = b) {
+  .set-btn;
+  .set-btn-size(@size);
+  .set-btn-blue
+}
+.ns-button (@type, @size: medium) when (@type = w) {
+  .set-btn;
+  .set-btn-size(@size);
+  .set-btn-white
+}
+.ns-button (@type, @size: medium) when (@type = disable) {
+  .set-btn;
+  .set-btn-size(@size);
+  .set-btn-disable
+}
+.set-btn {
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1;
+  user-select: none;
+  outline: none;
+  cursor: pointer;
+}
+.set-btn-size (@size) when (@size = small) {
+  padding: 8px 15px;
+}
+.set-btn-size (@size) when (@size = big) {
+  padding: 12px 25px;
+}
+.set-btn-size (@size) when (@size = medium) {
+  padding: 10px 20px;
+}
+.set-btn-blue () {
+  background:linear-gradient(90deg,rgba(12,141,255,1) 0%,rgba(48,158,255,1) 100%);
+  box-shadow:0px 2px 4px 0px rgba(48,158,255,0.4);
+  color: #fff;
+  &:hover {
+    .ns-tab-hover(#0c8dff, bg)
+  }
+  &:active {
+    .ns-tab-active(#0c8dff, bg)
+  }
+}
+.set-btn-orange () {
+  background:linear-gradient(90deg,rgba(235,97,0,1) 0%,rgba(239,129,51,1) 100%);
+  box-shadow:0px 2px 4px 0px rgba(235,97,0,0.4);
+  color: #fff;
+  &:hover {
+    .ns-tab-hover(#eb6100, bg)
+  }
+  &:active {
+    .ns-tab-active(#eb6100, bg)
+  }
+}
+.set-btn-white () {
+  border: 1px solid rgba(220,220,220,1);
+  box-shadow:0px 2px 4px 0px rgba(153,153,153,0.4);
+  &:active {
+    .ns-tab-active(#fff, bg)
+  }
+}
+.set-btn-disable () {
+  background: #eaeaea;
+  color: #999;
+  box-shadow: 0px 2px 4px 0px rgba(153,153,153,0.4);
+  // pointer-events: none
+}
+.ns-transition (@time: .5s, @func: ease-in) {
+  transition: all @time @func
+}
+
+
+// 风格 以 'ns-' 开头
+.ns-href {
+  color: @nsTheme;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+// btn点击效果, 文本: .ns-tab-active(#eb6100, txt) 按钮: .ns-tab-active(#eb6100, bg)
+.ns-tab-active (@color, @type) when (@type = txt) {
+  color: darken(@color, 20%);
+  .set-attr 
+}
+.ns-tab-active (@color, @type) when (@type = bg) {
+  background: darken(@color, 20%);
+  .set-attr
+}
+.set-attr () {
+  font-weight: 500;
+  transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.ns-tab-hover (@color, @type) when (@type = txt) {
+  color: lighten(@color, 15%);
+  .set-attr
+}
+.ns-tab-hover (@color, @type) when (@type = bg) {
+  background: lighten(@color, 15%);
+  .set-attr
+}
+// 文本裁剪
+.ns-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+/*
+*   描述： 箭头
+*   说明:  通过 .ns-arrow(@direction, @color, @pixel) 调用
+*/
+.arrowSet {
+  content: "";
+  position: absolute;
+  display: block;
+  border-width: 5px;
+  z-index: 1;
+  border-style: solid;
+}
+.arrowUp(@color, @pixel){
+  .arrowSet;
+  top: -(@pixel * 2);
+  left: -(@pixel);
+  border-color: transparent transparent @color transparent;
+}
+.arrowDown(@color, @pixel){
+  .arrowSet;
+  bottom: -(@pixel * 2);
+  left: -(@pixel);
+  border-color: @color transparent transparent transparent;
+}
+.arrowLeft(@color, @pixel){
+  .arrowSet;
+  left: -(@pixel * 2);
+  top: -(@pixel);
+  border-color: transparent @color transparent transparent;
+}
+.arrowRight(@color, @pixel){
+  .arrowSet;
+  right: -(@pixel * 2);
+  top: -(@pixel);
+  border-color: transparent transparent transparent @color;
+}
+.ns-arrow(@direction, @color, @pixel) when (@direction = up) {
+  .arrowUp(@color, @pixel);
+}
+.ns-arrow(@direction, @color, @pixel) when (@direction = down) {
+  .arrowDown(@color, @pixel);
+}
+.ns-arrow(@direction, @color, @pixel) when (@direction = left) {
+  .arrowLeft(@color, @pixel);
+}
+.ns-arrow(@direction, @color, @pixel) when (@direction = right) {
+  .arrowRight(@color, @pixel);
+}

@@ -1,0 +1,57 @@
+.js-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.js-hidden {
+  display: none !important
+}
+/*
+*   描述： 箭头
+*   说明:  通过 arrow(@direction, @color, @pixel) 调用
+*/
+.arrowSet {
+  content: "";
+  position: absolute;
+  display: block;
+  border-width: 5px;
+  z-index: 1;
+  border-style: solid;
+}
+.arrowUp(@color, @pixel){
+  .arrowSet;
+  top: -(@pixel * 2);
+  left: -(@pixel);
+  border-color: transparent transparent @color transparent;
+}
+.arrowDown(@color, @pixel){
+  .arrowSet;
+  bottom: -(@pixel * 2);
+  left: -(@pixel);
+  border-color: @color transparent transparent transparent;
+}
+.arrowLeft(@color, @pixel){
+  .arrowSet;
+  left: -(@pixel * 2);
+  top: -(@pixel);
+  border-color: transparent @color transparent transparent;
+}
+.arrowRight(@color, @pixel){
+  .arrowSet;
+  right: -(@pixel * 2);
+  top: -(@pixel);
+  border-color: transparent transparent transparent @color;
+}
+.arrow(@direction, @color, @pixel) when (@direction = up) {
+  .arrowUp(@color, @pixel);
+}
+.arrow(@direction, @color, @pixel) when (@direction = down) {
+  .arrowDown(@color, @pixel);
+}
+.arrow(@direction, @color, @pixel) when (@direction = left) {
+  .arrowLeft(@color, @pixel);
+}
+.arrow(@direction, @color, @pixel) when (@direction = right) {
+  .arrowRight(@color, @pixel);
+}
+  

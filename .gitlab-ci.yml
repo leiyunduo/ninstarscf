@@ -1,0 +1,46 @@
+stages:
+ - build
+
+
+v2_production:
+  stage: build
+  script:
+   - rm -rf node_models
+   - cnpm install
+   - npm run build
+   - cp -rf dist/* /var/www/index/ninstar
+  tags:
+   - 'v2_production'
+  only:
+    - v2_production
+  when:
+    manual
+
+
+v2_staging:
+  stage: build
+  script:
+   - rm -rf node_models
+   - cnpm install
+   - npm run build
+   - cp -rf dist/* /var/www/index/ninstar
+  tags:
+   - 'v2_staging'
+  only:
+    - v2_staging
+  when:
+    manual
+
+v2_dev:
+  stage: build
+  script:
+   - rm -rf node_models
+   - cnpm install
+   - npm run build
+   - cp -rf dist/* /var/www/index/ninstar
+  tags:
+   - 'web_v2_dev'
+  only:
+    - v2
+  when:
+    manual

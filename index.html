@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="./static/css/reset.css">
+    <link rel="stylesheet" href="./static/css/header.css">
+    <link rel="stylesheet" href="./static/css/footer.css">
+    <title>九星供应链交易大数据增信平台</title>
+    <!-- <link rel="shortcut icon" href="./static/favicon.ico" />
+    <link rel="bookmark" href="./static/favicon.ico" type="image/x-icon"　/> -->
+    <link href="./static/logo.ico" rel="icon" type="image/x-icon"/>
+    <script type="text/javascript" src="./static/js/lib/jquery/jquery.js"></script>
+    <!-- ie 兼容模式 -->
+    <script type="text/javascript" src ="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6"></script> 
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+      #nprogress .bar {
+        z-index: 1090 !important;
+        /* background: rgb(1, 247, 255) !important; */
+        height: 4px;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <!-- <script src="./static/sdk/webim.js"></script>
+    <script src="./static/sdk/json2.js"></script> -->
+    <script type="text/javascript" src="./static/js/lib/jquery/jquery.js"></script>
+    <script type="text/javascript" src="./static/js/lib/jquery/jquery-ui.js"></script>
+    <script type="text/javascript" src="./static/js/lib/lodash.min.js"></script>
+    <script type="text/javascript" src="./static/js/lib/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="./static/js/lib/bootstrap/bootstrap-table.js"></script>
+    <script type="text/javascript" src="./static/js/lib/bootstrap/bootstrap-collapse.js"></script>
+    <script type="text/javascript" src="./static/js/lib/xss.js"></script>
+    <!--TLS web sdk(只用于托管模式，独立模式不用引入)-->
+    <script type="text/javascript" src="https://tls.qcloud.com/libs/api.min.js"></script>
+    <!--用于获取文件MD5 js api(发送图片时用到)-->
+    <script type="text/javascript" src="./static/js/lib/md5/spark-md5.js"></script>
+    <!--web im sdk-->
+    <script type="text/javascript" src="./static/sdk/webim.js"></script>
+    <!--<script type="text/javascript" src="sdk/webim.min.js"></script>-->
+    <script type="text/javascript" src="./static/sdk/json2.js"></script>
+    <!--web im sdk 登录 示例代码-->
+    <script type="text/javascript" src="./static/js/login/login.js"></script>
+    <!--web im sdk 登出 示例代码-->
+    <script type="text/javascript" src="./static/js/logout/logout.js"></script>
+    <!--web im 解析一条消息 示例代码-->
+    <script type="text/javascript" src="./static/js/common/show_one_msg.js"></script>
+    <!--web im demo 基本逻辑-->
+    <script type="text/javascript" src="./static/js/base.js"></script>
+    <!--web im sdk 资料管理 api 示例代码-->
+    <script type="text/javascript" src="./static/js/profile/profile_manager.js"></script>
+    <!--web im sdk 好友管理 api 示例代码-->
+    <script type="text/javascript" src="./static/js/friend/friend_manager.js"></script>
+    <!--web im sdk 好友申请管理 api 示例代码-->
+    <script type="text/javascript" src="./static/js/friend/friend_pendency_manager.js"></script>
+    <!--web im sdk 好友黑名单管理 api 示例代码-->
+    <script type="text/javascript" src="./static/js/friend/friend_black_list_manager.js"></script>
+    <!--web im sdk 最近联系人 api 示例代码-->
+    <script type="text/javascript" src="./static/js/recentcontact/recent_contact_list_manager.js"></script>
+    <!--web im 切换聊天好友或群组 示例代码-->
+    <script type="text/javascript" src="./static/js/switch_chat_obj.js"></script>
+    <!--web im sdk 获取c2c获取群组历史消息 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/get_history_msg.js"></script>
+    <!--web im sdk 发送普通消息(文本和表情) api 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/send_common_msg.js"></script>
+    <!--web im sdk 上传和发送图片消息 api 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/upload_and_send_pic_msg.js"></script>
+    <!--web im sdk 上传和发送文件消息 api 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/upload_and_send_file_msg.js"></script>
+    <!--web im sdk 切换播放语音消息 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/switch_play_sound_msg.js"></script>
+    <!--web im sdk 发送自定义消息 api 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/send_custom_msg.js"></script>
+    <!--web im 监听新消息(c2c或群) 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/receive_new_msg.js"></script>
+    <!--web im 监听好友系统通知消息 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/receive_friend_system_msg.js"></script>
+    <!--web im 监听资料系统通知消息 示例代码-->
+    <script type="text/javascript" src="./static/js/msg/receive_profile_system_msg.js"></script>
+    <script type="text/javascript">
+      //帐号模式，0-表示独立模式，1-表示托管模式
+      var accountMode = 0;
+      //官方 demo appid,需要开发者自己修改（托管模式）
+      var sdkAppID = 1400108855;
+      var accountType = 30504
+    //   线上的。别瞎用
+      // var sdkAppID = 1400107046;
+      // var accountType = 30503;
+      //当前用户身份
+      var loginInfo = {
+          'sdkAppID': sdkAppID, //用户所属应用id,必填
+          'identifier': null, //当前用户ID,必须是否字符串类型，必填
+          'accountType': accountType, //用户所属应用帐号类型，必填
+          'userSig': null, //当前用户身份凭证，必须是字符串类型，必填
+          'identifierNick': null, //当前用户昵称，不用填写，登录接口会返回用户的昵称，如果没有设置，则返回用户的id
+          'headurl': '/static/img/u504.png' //当前用户默认头像，选填，如果设置过头像，则可以通过拉取个人资料接口来得到头像信息
+      };
+      var AdminAcount = 'qwe101';
+      var selType = webim.SESSION_TYPE.C2C; //当前聊天类型
+      var selToID = null; //当前选中聊天id（当聊天类型为私聊时，该值为好友帐号，否则为群号）
+      var selSess = null; //当前聊天会话对象
+      var recentSessMap = {}; //保存最近会话列表
+      var reqRecentSessCount = 50; //每次请求的最近会话条数，业务可以自定义
+      //默认好友头像
+      var friendHeadUrl = '/static/img/u504.png'; //仅demo使用，用于没有设置过头像的好友
+      var groupHeadUrl = 'img/group.jpg'; //仅demo使用，用于没有设置过群头像的情况
+      //存放c2c或者群信息（c2c用户：c2c用户id，昵称，头像；群：群id，群名称，群头像）
+      var infoMap = {}; //初始化时，可以先拉取我的好友和我的群组信息
+      var maxNameLen = 12; //我的好友或群组列表中名称显示最大长度，仅demo用得到
+      var reqMsgCount = 15; //每次请求的历史消息(c2c获取群)条数，仅demo用得到
+      var pageSize = 15; //表格的每页条数，bootstrap table 分页时用到
+      var totalCount = 200; //每次接口请求的条数，bootstrap table 分页时用到
+      var emotionFlag = false; //是否打开过表情选择框
+      var curPlayAudio = null; //当前正在播放的audio对象
+      var getPrePageC2CHistroyMsgInfoMap = {}; //保留下一次拉取好友历史消息的信息
+      var getPrePageGroupHistroyMsgInfoMap = {}; //保留下一次拉取群历史消息的信息
+      var defaultSelGroupId = null; //登录默认选中的群id，选填，仅demo用得到
+      //监听好友系统通知函数对象，方法都定义在receive_friend_system_msg.js文件中
+      var onFriendSystemNotifys = {
+          "1": onFriendAddNotify, //好友表增加
+          "2": onFriendDeleteNotify, //好友表删除
+          "3": onPendencyAddNotify, //未决增加
+          "4": onPendencyDeleteNotify, //未决删除
+          "5": onBlackListAddNotify, //黑名单增加
+          "6": onBlackListDeleteNotify //黑名单删除
+      }
+      var onC2cEventNotifys = {
+          "92": onMsgReadedNotify, //消息已读通知,
+          "96": onMultipleDeviceKickedOut,
+      };
+      //监听资料系统通知函数对象，方法都定义在receive_profile_system_msg.js文件中
+      var onProfileSystemNotifys = {
+          "1": onProfileModifyNotify //资料修改
+      };
+      //监听连接状态回调变化事件
+      var onConnNotify = function(resp) {
+          var info;
+          switch (resp.ErrorCode) {
+              case webim.CONNECTION_STATUS.ON:
+                  webim.Log.warn('建立连接成功: ' + resp.ErrorInfo);
+                  break;
+              case webim.CONNECTION_STATUS.OFF:
+                  info = '连接已断开，无法收到新消息，请检查下你的网络是否正常: ' + resp.ErrorInfo;
+                  // alert(info);
+                  webim.Log.warn(info);
+                  break;
+              case webim.CONNECTION_STATUS.RECONNECT:
+                  info = '连接状态恢复正常: ' + resp.ErrorInfo;
+                  // alert(info);
+                  webim.Log.warn(info);
+                  break;
+              default:
+                  webim.Log.error('未知连接状态: =' + resp.ErrorInfo);
+                  break;
+          }
+      };
+      //IE9(含)以下浏览器用到的jsonp回调函数
+      function jsonpCallback(rspData) {
+          webim.setJsonpLastRspData(rspData);
+      }
+      //监听事件
+      var listeners = {
+          "onConnNotify": onConnNotify //监听连接状态回调变化事件,必填
+              ,
+          "jsonpCallback": jsonpCallback //IE9(含)以下浏览器用到的jsonp回调函数，
+              ,
+          "onMsgNotify": onMsgNotify //监听新消息(私聊，普通群(非直播聊天室)消息，全员推送消息)事件，必填
+              ,
+          "onBigGroupMsgNotify": onBigGroupMsgNotify //监听新消息(直播聊天室)事件，直播场景下必填
+              ,
+          "onFriendSystemNotifys": onFriendSystemNotifys //监听好友系统通知事件，选填
+              ,
+          "onProfileSystemNotifys": onProfileSystemNotifys //监听资料系统（自己或好友）通知事件，选填
+              ,
+          "onKickedEventCall": onKickedEventCall //被其他登录实例踢下线
+              ,
+          "onC2cEventNotifys": onC2cEventNotifys //监听C2C系统消息通道
+              ,
+          "onAppliedDownloadUrl": onAppliedDownloadUrl //申请文件/音频下载地址的回调
+      };
+      var isAccessFormalEnv = true; //是否访问正式环境
+      var isLogOn = false; //是否开启sdk在控制台打印日志
+      //初始化时，其他对象，选填
+      var options = {
+          'isAccessFormalEnv': isAccessFormalEnv, //是否访问正式环境，默认访问正式，选填
+          'isLogOn': isLogOn //是否开启控制台打印日志,默认开启，选填
+      }
+      if (accountMode == 1) { //托管模式
+          //判断是否已经拿到临时身份凭证
+          if (webim.Tool.getQueryString('tmpsig')) {
+              if (loginInfo.identifier == null) {
+                  webim.Log.info('start fetchUserSig');
+                  //获取正式身份凭证，成功后会回调tlsGetUserSig(res)函数
+                  TLSHelper.fetchUserSig();
+              }
+          } else { //未登录
+              if (loginInfo.identifier == null) {
+                  //弹出选择应用类型对话框
+                  $('#select_app_dialog').modal('show');
+                  $("body").css("background-color", 'white');
+              }
+          }
+      } else { //独立模式
+          // $('#login_dialog').modal('show');
+      }
+      var msgflow = document.getElementsByClassName("msgflow")[0];
+      var bindScrollHistoryEvent = {
+          init: function() {
+              // msgflow.onscroll = function() {
+                  // if (msgflow.scrollTop == 0) {
+                  //     msgflow.scrollTop = 10;
+                  //     if (selType == webim.SESSION_TYPE.C2C) {
+                  //         getPrePageC2CHistoryMsgs();
+                  //     } else {
+                  //         getPrePageGroupHistoryMsgs();
+                  //     }
+
+                  // }
+              // }
+          },
+          reset: function() {
+              // msgflow.onscroll = null;
+          }
+      };
+  </script>
+  </body>
+</html>

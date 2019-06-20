@@ -1,0 +1,99 @@
+.footer{
+	width: 100%;
+	min-width: 1200px;
+	padding: 30px 0;
+	background: rgba(52, 53, 54, 1);
+	color: #fff;
+}
+.footerBanner{
+	height: 75px;
+}
+.slideLogo{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	border-bottom: 2px solid #fff;	
+}
+.slide .footer_logo {
+	float: left;
+}
+.slide .footer_logo img {
+	width: 65px;
+	height: 65px;
+}
+.slide .footer_name h3{
+	height: 35px;
+	line-height: 35px;
+	padding-left: 90px;
+	font-size: 20px;
+	font-weight: normal;
+}
+.slide .footer_name h4{
+	height: 30px;
+	line-height: 30px;
+	padding-left: 90px;
+	font-size: 22px;
+	font-weight: normal;
+}
+
+.cr {
+	height: 45px;
+	color: #fff;
+	line-height: 45px;
+	font-size: 18px;
+	width: 1200px;
+	margin: 0 auto;
+}
+.contentInfo{
+	width: 1200px;
+	margin: 0 auto;
+}
+.contentInfo .about{
+	float: left;
+	width: 20%;
+	/*padding: 30px 0;*/
+	color: #fff
+}
+.about:first-of-type {
+	width: 16%;
+}
+.about:first-of-type p {
+	padding: 10px 0;
+	line-height: 20px;
+	font-size: 14px;
+}
+.about_list {
+	text-align: center;
+}
+.about_list li{
+	list-style: none;
+	line-height: 36px;
+}
+.about_list p{
+	padding: 10px 0;
+	font-weight: bold;
+}
+.about p:hover span {
+	color: rgb(200,24,0)
+}
+.about p i {
+	font-size: 22px;
+	margin-right: 20px;
+}
+.about_list li a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 14px;
+}
+.about_list li a:hover {
+	color: rgb(200,24,0);
+}
+.about:last-of-type {
+	width: 22%;
+	text-align: right;
+}
+.about:last-of-type p{
+	text-align: right;
+	font-size: 18px;
+	margin-top: 20px;
+}	

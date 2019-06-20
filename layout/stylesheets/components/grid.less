@@ -1,0 +1,58 @@
+// 栅格
+@gutter: 10px;
+@grid-columns: 12;
+@screen-sm-min: 768px;
+@screen-md-min: 992px;
+@screen-lg-min: 1200px;
+
+.calc-grid-column(@index, @class) when (@index > 0) {
+  .-col-@{class}-@{index} {
+    width: percentage((@index / @grid-columns));
+  }
+}
+
+.loop-grid-columns(@index, @class) when (@index >= 0) {
+  .calc-grid-column(@index, @class);
+
+  .loop-grid-columns((@index - 1), @class);
+}
+
+.make-grid(@class) {
+  .loop-grid-columns(@grid-columns, @class)
+}
+
+.ns-grid {
+  display: flex;
+  flex-wrap: wrap;
+  &.-gutters {
+    margin-left: -@gutter;
+    > .ns-grid__col {
+      padding-left: @gutter
+    }
+  }
+  &.-align-top {
+    align-items: flex-start;
+  }
+  &.-align-bottom {
+    align-items: flex-end
+  }
+  &.-align-center {
+    align-items: center
+  }
+  .ns-grid__col {
+    flex: 1;
+    @media (min-width: @screen-sm-min) {
+      .make-grid(sm);
+    }
+    
+    @media (min-width: @screen-md-min) {
+      .make-grid(md);
+    }
+    
+    @media (min-width: @screen-lg-min) {
+      .make-grid(lg);
+    }
+  }
+}
+
+

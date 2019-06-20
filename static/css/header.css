@@ -1,0 +1,258 @@
+.header{
+	width: 100%;
+	min-width: 1280px;
+	height: 70px;
+	color: #fff;
+	background: #343536;
+	position: fixed;
+	top: 0;
+	z-index: 1080;
+}
+.headerWrap {
+	height: 70px;
+}
+.header nav {
+	/* width: 75%; */
+	min-width: 1280px;
+	height: 100%;
+	/*background: red;*/
+	margin: 0 auto;
+	/* padding: 0 20px; */
+	/* overflow-x: scroll; */
+	/* overflow-y: hidden; */
+	/* overflow: hidden; */
+}
+.header nav::-webkit-scrollbar{
+	width: 0;
+}
+nav .logo{
+	width: 160px;
+	height: 50px;
+	margin-top: 15px;
+	float: left;
+	padding-left: 50px;
+}
+nav .menu {
+	height: 70px;
+	/* margin-left: 10%; */
+	/* float: left; */
+	overflow: hidden;
+}
+nav .menu li {
+	display: inline-block;
+	/* height: 100%; */
+	padding: 0 20px;
+	font-size: 16px;
+}
+.menu li a{
+	color: #fff;
+	text-decoration: none;
+	line-height: 70px;
+	/*IF version > 10*/
+	/*transition: all 130ms ease-in;*/
+}
+.c_right_part .b {
+	margin-right: 30px;
+}
+.c_right_part .a {
+	padding: 0 20px;
+	display: flex;
+	flex-direction: row;
+	min-width: 85px;
+}
+.c_right_part dl.a dd {
+    padding-top: 24px;
+}
+.c_right_part .a dt img{
+	margin-top: 25px;
+	margin-right: 3px;
+}
+.c_right_part .a dd a{
+	text-decoration: underline;
+	font-family:PingFangSC-Regular;
+	font-size:12px;
+	color:#ffffff;
+	letter-spacing:0.15px;
+	text-align:left;
+	cursor: pointer;
+}
+.c_right_part .a dd a:hover {
+	color: #eb6100;
+}
+.c_right_part .b dd {
+	position: relative;
+}
+.c_right_part .b dd span {
+	position: absolute;
+	top: 20px;
+	right: -9px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background: #ff0011;
+	color: #fff;
+	text-align: center;
+	line-height: 14px;
+	font-size: 1.1;
+	border-radius: 50%;
+}
+/* crb--06-20 */
+nav .c_user_login {
+	float: right;
+	height: 100%;
+	font-size: 14px;
+	text-align: center;
+	min-width: 200px;
+	max-width: 300px;
+	position: relative;
+}
+.c_user_login .c_i{
+	position: absolute;
+	display: inline-block;
+	right: 20px;
+	/* bottom: 0; */
+	top:62px;
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #eee;
+}
+.c_user_login .c_i:after{
+	content: '';
+	position: absolute;
+	top: 1px;
+	left: -8px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #fff;
+}
+.c_user_login .c_list_ul{
+	display: none;
+	border: 1px solid #eee;
+}
+.c_user_login:hover .c_list_ul{
+	display: block;
+}
+.c_user_login .p{
+	background: url(../img/companyicon.png) no-repeat left center;
+	padding: 0 20px 0 25px;
+	cursor: pointer;
+	height: 70px;
+	color: #ccc;
+}
+.c_user_login .p span{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+	max-width: 160px;
+	line-height: 70px;
+}
+.c_user_login .p i{
+	position: absolute;
+	top: 28px;
+	right: 0px;
+	margin-left: 10px;
+}
+.c_user_login:hover .p{
+	width: 100%;
+	/* background: #fff; */
+	/* color: #343536; */
+}
+.c_user_login:hover .p i{
+	transform:rotateZ(180deg);
+}
+.c_user_login .c_list_ul{
+	width: 100%;
+	background: #fff;
+	z-index: 99999;
+	color: #343536;
+	text-align: left;
+}
+.c_user_login .c_list_ul li{
+	padding: 0px 10px;
+	width: 100%;
+}
+.c_user_login .c_list_ul a{
+	text-decoration: none;
+	font-family:PingFangSC-Regular;
+	font-size:12px;
+	color:#999999;
+	letter-spacing:0.17px;
+	text-align:left;
+	cursor: pointer;
+	display: inline-block;
+	padding-left: 17px;
+}
+.c_user_login .c_list_ul .a_out {
+	font-family:PingFangSC-Regular;
+	font-size:12px;
+	color:#333333;
+	letter-spacing:0.17px;
+	text-align:left;
+	padding-left: 17px;
+}
+.c_user_login .c_list_ul p{
+	display: block;
+	width: 100%;
+	padding: 10px 14px 10px 0;
+	border-top: 1px solid #f6f6f6;
+}
+.c_user_login .c_list_ul li:hover p {
+	border-top: 1px solid transparent;
+}
+.c_user_login .c_list_ul li:hover a{
+	color: #eb6100;
+	border-left: 3px solid #eb6100;
+}
+.c_btn{
+	border: 1px solid #eb6100;
+	outline: none;
+	border-radius: 4px;
+	padding: 8px 20px;
+	background: #fff;
+}
+.c_btn.c_cancel{
+	color: #eb6100;
+}
+.c_btn.c_sure{
+	background: #eb6100;
+	color: #fff;
+}
+/* end */
+nav .login a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 14px;
+	padding: 0 10px;
+	transition: all 130ms ease-in;
+}
+.header li a:hover,.login a:hover{
+	color: #eb6100;
+	/*text-shadow: 1px 1px 10px rgb(200,24,0)*/
+}
+/*提示当前位置*/
+.location  {
+	/* width: 1200px;
+	margin: 0 auto; */
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #343536;
+	/* background: #fff; */
+}
+.location a{
+	text-decoration: none;
+	color: #343536;
+}
+.clearFixed {
+	clear: both;
+}
+/* 修改导航栏位置 */
+.c_right_part{
+	float: right;
+	padding-right: 80px;
+	display: flex;
+	flex-direction: row;
+}

@@ -1,0 +1,8 @@
+/build/
+/config/
+/dist/
+/*.js
+/test/unit/coverage/
+/src/components/im/
+/src/components/financing/new_icon
+/src/components/chainLine/font/iconfont.js
